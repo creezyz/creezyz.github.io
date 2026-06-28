@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CREEZYZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-bar"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="bg-stripes"></div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon">&#9790;</span>
+    </button>
+
+    <header>
+      <h1 class="p5-title" id="mainTitle">
+        <span class="p5-title-letter">C</span>
+        <span class="p5-title-letter">R</span>
+        <span class="p5-title-letter">E</span>
+        <span class="p5-title-letter">E</span>
+        <span class="p5-title-letter">Z</span>
+        <span class="p5-title-letter">Y</span>
+        <span class="p5-title-letter">Z</span>
+      </h1>
+    </header>
+
+    <main>
+      <div class="button-section-group">
+        <button class="nav-btn" onclick="toggleAbout()">
+          <span>ABOUT ME</span>
+        </button>
+        <section class="p5-card main-card collapsible" id="aboutSection">
+          <h2 class="p5-badge">ABOUT ME</h2>
+          <p>
+            Hi, I'm Rick, known online as <strong>creezyz</strong>. I'm a
+            9th-grade student from the Chemnitz area in Germany. When I'm not
+            studying, I'm usually diving deep into tech—whether that's messing
+            around with hardware, setting up Linux servers, testing AI tools, or
+            tinkering with custom Android ROMs.
+          </p>
+          <p>
+            I'm also really getting into coding right now. If you want to
+            challenge me to a battle of minds, let's play a game on Chess.com!
+          </p>
+        </section>
+      </div>
+
+      <div class="button-section-group">
+        <button
+          class="nav-btn"
+          onclick="window.location.href = 'projects.html'"
+        >
+          <span>PROJECTS</span>
+        </button>
+      </div>
+
+      <div class="button-section-group">
+        <button class="nav-btn" onclick="toggleConnect()">
+          <span>CONNECT</span>
+        </button>
+        <section class="p5-card socials-card collapsible" id="connectSection">
+          <h2 class="p5-badge red">CONNECT</h2>
+          <ul class="p5-list">
+            <li>
+              <a
+                href="https://chess.com/member/creezyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p5-link"
+                >CHESS.COM</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/creezyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p5-link"
+                >GITHUB</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://instagram.com/kms.rick"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p5-link"
+                >INSTAGRAM</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://tiktok.com/@kms.rick"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p5-link"
+                >TIKTOK</a
+              >
+            </li>
+            <li><a href="mailto:rs2010@magenta.de" class="p5-link">MAIL</a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p class="p5-footer">&copy; 2026 CREEZYZ</p>
+      <p class="p5-hint">
+        [ SYSTEM HINT: Toggle your device's light/dark mode to change the
+        reality ]
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

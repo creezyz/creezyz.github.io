@@ -1,0 +1,288 @@
+:root {
+  --p5-blue: #2563eb;
+  --p5-blue-bright: #3b82f6;
+  --p5-blue-dark: #1d4ed8;
+  --p5-blue-glow: rgba(37, 99, 235, 0.45);
+  --p5-cream: #fdfbf7;
+  --p5-cream-soft: #f5efe3;
+  --p5-anthracite: #1c1c22;
+  --p5-anthracite-soft: #27272f;
+  --p5-anthracite-light: #34343d;
+  --p5-black: #000000;
+  --p5-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--p5-anthracite);
+  color: var(--p5-cream);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+  letter-spacing: 0.2px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -25deg,
+    transparent,
+    transparent 40px,
+    rgba(37, 99, 235, 0.06) 40px,
+    rgba(37, 99, 235, 0.06) 42px
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.game-container {
+  background-color: var(--p5-anthracite-soft);
+  padding: 44px 38px;
+  text-align: center;
+  width: min(360px, 92vw);
+  border: 3px solid var(--p5-blue);
+  box-shadow: 8px 8px 0px var(--p5-blue-dark), 0 0 30px var(--p5-blue-glow);
+  clip-path: polygon(2% 0%, 100% 2%, 98% 100%, 0% 98%);
+  position: relative;
+  z-index: 1;
+}
+
+.game-container h1 {
+  font-family: "Impact", "Arial Black", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 2.2rem;
+  color: var(--p5-blue-bright);
+  margin: 0 0 6px 0;
+  transform: skewX(-6deg);
+  text-shadow: 3px 3px 0px var(--p5-black);
+}
+
+.game-container h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--p5-blue);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.85;
+}
+
+#word-display {
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin: 22px 0;
+  font-weight: 800;
+  color: var(--p5-cream);
+  font-family: "Impact", "Arial Black", sans-serif;
+  background: var(--p5-anthracite-light);
+  padding: 16px 8px;
+  border: 2px solid var(--p5-blue);
+  clip-path: polygon(2% 0%, 100% 3%, 98% 100%, 0% 97%);
+}
+
+#message {
+  color: var(--p5-blue-bright);
+  font-family: "Courier New", monospace;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  min-height: 22px;
+  margin: 8px 0 4px 0;
+  font-weight: 700;
+}
+
+.input-section {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+input {
+  width: 70px;
+  height: 50px;
+  font-size: 1.6rem;
+  text-align: center;
+  border: 3px solid var(--p5-blue);
+  background: var(--p5-anthracite-light);
+  color: var(--p5-cream);
+  text-transform: uppercase;
+  font-weight: 800;
+  outline: none;
+  transition: all 0.15s ease-out;
+  clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+  box-shadow: 3px 3px 0px var(--p5-blue-dark);
+}
+
+input:focus {
+  border-color: var(--p5-blue-bright);
+  box-shadow: 4px 4px 0px var(--p5-blue);
+  transform: scale(1.03);
+}
+
+button {
+  height: 50px;
+  padding: 0 24px;
+  font-size: 1rem;
+  font-family: "Impact", "Arial Black", sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background-color: var(--p5-blue);
+  color: var(--p5-white);
+  border: 3px solid var(--p5-blue-bright);
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.1, 0.9, 0.2, 1);
+  clip-path: polygon(6% 0%, 100% 4%, 94% 100%, 0% 96%);
+  box-shadow: 4px 4px 0px var(--p5-black);
+}
+
+button:hover {
+  background-color: var(--p5-blue-bright);
+  border-color: var(--p5-cream);
+  transform: scale(1.05) skewX(-4deg);
+  letter-spacing: 4px;
+  box-shadow: 5px 5px 0px var(--p5-black);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#attempts-display {
+  margin-top: 16px;
+  font-family: "Courier New", monospace;
+  font-size: 0.86rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--p5-cream);
+  opacity: 0.8;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  background: var(--p5-anthracite-soft);
+  border: 3px solid var(--p5-blue);
+  color: var(--p5-cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.15s cubic-bezier(0.1, 0.9, 0.2, 1);
+  clip-path: polygon(12% 0%, 100% 12%, 88% 100%, 0% 88%);
+  box-shadow: 4px 4px 0px var(--p5-blue-dark);
+}
+
+.theme-toggle:hover {
+  background: var(--p5-blue);
+  border-color: var(--p5-blue-bright);
+  color: var(--p5-white);
+  transform: scale(1.1) rotate(-6deg);
+  box-shadow: 6px 6px 0px var(--p5-black);
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(35deg) scale(1.2);
+}
+
+body[data-theme="light"] {
+  background-color: var(--p5-cream);
+  color: #111;
+}
+
+body[data-theme="light"]::before {
+  background: repeating-linear-gradient(
+    -25deg,
+    transparent,
+    transparent 40px,
+    rgba(37, 99, 235, 0.05) 40px,
+    rgba(37, 99, 235, 0.05) 42px
+  );
+}
+
+body[data-theme="light"] .game-container {
+  background-color: var(--p5-cream-soft);
+  border-color: var(--p5-blue);
+  box-shadow: 8px 8px 0px var(--p5-blue-dark);
+  color: #111;
+}
+
+body[data-theme="light"] .game-container h1 {
+  color: var(--p5-blue-dark);
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] #word-display {
+  background: var(--p5-cream);
+  color: #111;
+  border-color: var(--p5-blue);
+}
+
+body[data-theme="light"] input {
+  background: var(--p5-cream);
+  border-color: var(--p5-blue);
+  color: #111;
+}
+
+body[data-theme="light"] input:focus {
+  border-color: var(--p5-blue-dark);
+}
+
+body[data-theme="light"] button {
+  background-color: var(--p5-blue);
+  color: var(--p5-white);
+}
+
+body[data-theme="light"] #message {
+  color: var(--p5-blue-dark);
+}
+
+body[data-theme="light"] #attempts-display {
+  color: #111;
+}
+
+body[data-theme="light"] .theme-toggle {
+  background: var(--p5-cream-soft);
+  border-color: var(--p5-blue);
+  color: #111;
+}
+
+body[data-theme="light"] .theme-toggle:hover {
+  background: var(--p5-blue);
+  color: var(--p5-white);
+  border-color: var(--p5-blue-bright);
+}
+
+@media (max-width: 600px) {
+  .theme-toggle {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}

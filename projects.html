@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECTS | CREEZYZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar"></div>
+  <canvas id="particleCanvas"></canvas>
+  <div class="bg-stripes"></div>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="theme-icon">&#9790;</span>
+  </button>
+
+  <header>
+    <a href="index.html" style="text-decoration:none;display:inline-block;">
+      <h1 class="p5-title" id="mainTitle">
+        <span class="p5-title-letter" style="font-size:4.8rem;color:var(--p5-cream);background:var(--p5-anthracite);transform:rotate(-4deg);border-color:var(--p5-blue)">C</span>
+        <span class="p5-title-letter" style="font-size:4.2rem;color:var(--p5-blue);background:transparent;transform:rotate(3deg) skewX(-10deg);border-color:var(--p5-blue)">R</span>
+        <span class="p5-title-letter" style="font-size:5rem;color:var(--p5-white);background:var(--p5-blue);transform:rotate(-2deg);padding:2px 10px;border-color:var(--p5-blue-bright)">E</span>
+        <span class="p5-title-letter" style="font-size:3.8rem;color:var(--p5-cream);background:var(--p5-anthracite);transform:rotate(5deg);border-color:var(--p5-blue)">E</span>
+        <span class="p5-title-letter" style="font-size:4.6rem;color:var(--p5-blue);background:transparent;transform:rotate(-6deg) skewX(5deg);border-color:var(--p5-blue)">Z</span>
+        <span class="p5-title-letter" style="font-size:4rem;color:var(--p5-cream);background:var(--p5-anthracite);transform:rotate(2deg);border-color:var(--p5-blue)">Y</span>
+        <span class="p5-title-letter" style="font-size:4.4rem;color:var(--p5-white);background:var(--p5-blue);transform:rotate(-3deg);padding:2px 8px;border-color:var(--p5-blue-bright)">Z</span>
+      </h1>
+    </a>
+  </header>
+
+  <main>
+    <div class="back-button">
+      <a href="index.html" class="p5-link" style="max-width:200px;">&larr; BACK</a>
+    </div>
+
+    <section class="p5-card projects-card" style="clip-path:polygon(0% 2%, 98% 0%, 100% 98%, 2% 100%);border-right:4px solid var(--p5-blue-bright);">
+      <h2 class="p5-badge">PROJECTS</h2>
+
+      <div class="project-item" onclick="openWordleModal()">
+        <h3>WORDLE (DE)</h3>
+        <p>Ein selbstprogrammierter Klon des beliebten Wort-Rätsels. Spiele es direkt im Browser oder schau dir an, wie es funktioniert.</p>
+        <div class="project-btn">PROJEKT &#x25B6;</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="p5-footer">&copy; 2026 CREEZYZ</p>
+    <p class="p5-hint">[ SYSTEM HINT: Toggle your device's light/dark mode to change the reality ]</p>
+  </footer>
+
+  <div id="wordleModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 class="p5-badge" style="background:var(--p5-blue);">WORDLE (DE)</h2>
+      <p><strong>Systemzugriff gewährt.</strong> Was möchtest du tun?</p>
+
+      <div class="modal-buttons">
+        <a href="wordle/wordle.html" class="p5-link">&#x25B6; SPIELEN</a>
+        <p class="modal-desc">Führe das Programm direkt im Browser aus.</p>
+
+        <a href="https://github.com/creezyz/wordle" target="_blank" rel="noopener noreferrer" class="p5-link">&lt;/&gt; SOURCE CODE</a>
+        <p class="modal-desc">Analysiere den Code auf GitHub.</p>
+      </div>
+
+      <button class="close-btn" onclick="closeWordleModal()">ABBRECHEN</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

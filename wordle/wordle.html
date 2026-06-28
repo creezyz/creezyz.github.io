@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wort-Rätsel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-icon">&#9790;</span>
+    </button>
+    <div class="game-container">
+        <h1>Wort-Rätsel</h1>
+        <p id="message">Lade Wörter...</p>
+
+        <div id="word-display">_ _ _ _ _</div>
+
+        <div class="input-section">
+            <input type="text" id="guess-input" maxlength="1" placeholder="Buchstabe">
+            <button onclick="makeGuess()">Raten</button>
+        </div>
+
+        <p id="attempts-display">Versuche übrig: 10</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (prefersDark ? 'dark' : 'light');
+        document.body.setAttribute('data-theme', initial);
+        const icon = document.querySelector('.theme-icon');
+        if (icon) icon.textContent = initial === 'light' ? '\u2600' : '\u263E';
+        const btn = document.getElementById('themeToggle');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            const cur = document.body.getAttribute('data-theme') || 'dark';
+            const next = cur === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            if (icon) icon.textContent = next === 'light' ? '\u2600' : '\u263E';
+          });
+        }
+      })();
+    </script>
+</body>
+</html>
