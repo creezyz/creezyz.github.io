@@ -1,0 +1,10 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Throwaway workspace (used by .tmp/build-wordle.js + the local logic validator)
+.tmp/
+
+# Editor backups
+*~
+*.swp

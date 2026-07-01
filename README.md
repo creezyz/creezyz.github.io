@@ -51,7 +51,18 @@ Typography stack:
 - Collapsible About card (toggle via `toggleAbout()`).
 - Collapsible Socials card with five social links (toggle via `toggleConnect()`).
 - Dedicated projects page (`projects.html`) with a Wordle entry-point modal.
-- Self-contained German Wordle clone in `/wordle` that fetches its word list from `words.txt`.
+- Self-contained **German Wordle clone** in `/wordle`:
+  - 6 rows × 5 columns grid, classic Wordle rules (6 attempts, color feedback)
+  - Green = right letter, right position · Yellow = right letter, wrong position · Red = not in word
+  - Duplicate-letter handling via the standard two-pass evaluation algorithm
+  - One single text input — type a 5-letter word the usual way, Enter or "RATEN" submits, the grid mirrors your typing live
+  - Physical-keyboard support: any letter, backspace and Enter / Return
+  - Umlauts (`ä ö ü ß`) count as their own letters, just like on a German keyboard
+  - Left-to-right cell-flip reveal with stagger, row-shake on too-short input
+  - Animation locks the input during reveal so the next row isn't typed prematurely
+  - Hidden "NEUES SPIEL" button that appears after a win or a loss
+  - Word pool is filtered to 5-letter entries from `words.txt`
+  - Word list is **also inlined** in `script.js`, so the game starts even when `words.txt` cannot be fetched (e.g. when the page is opened locally via `file://`)
 - Per-page theme toggle that stays in sync with the main page through `localStorage`.
 - Responsive layout that scales gracefully down to ~360 px wide.
 - Accessibility: `aria-label`s on icon-only buttons, focusable inputs.
@@ -88,13 +99,24 @@ Spacing was tightened, the About / Connect panels were rewritten as collapsible 
 ### v3 — Current "Blue Edition"
 The accent colour was migrated from red to a strong blue (`#2563eb`) while the typography and structural identity stayed the same. The light-background was switched from cold grey to cream (`#fdfbf7`) and the dark-background to anthracite (`#1c1c22`) for a warmer, more professional pairing. Anton was added as a more graphic display face for titles, the Wordle (DE) mini-project was wrapped as a subpage under `/wordle`, and that subpage received a matching toggle system so the theme stays consistent across the whole site while browsing.
 
+### v4 — Real Wordle rewrite
+The Wordle subpage stopped being a hangman-style letter guessing game and became a proper Wordle: a 6×5 grid, classic green / yellow / red color feedback, a single text input that mirrors whatever is being typed, a left-to-right flip reveal, row-shake on too-short input, and a "NEUES SPIEL" button that unlocks after winning or losing so the same round can be replayed with a fresh word.
+
+### v5 — Keyboard-first Wordle
+The on-screen QWERTZ keyboard was removed entirely — you now type the full 5-letter word into a single input field, like every other Wordle on the web. The wrong-letter color was also switched from gray to red so feedback reads instantly at a glance, and the input is locked during the staggered reveal so the cursor can't sneak into the next row.
+
+### v6 — Self-contained Wordle (no static server needed)
+The Wordle subpage no longer depends on a network fetch — the entire 5-letter word pool (~1500 entries) is also embedded directly in `wordle/script.js`. The `fetch('words.txt')` call is still attempted first for the cleaner deployment path, but on any failure (file:// open, missing server, network error, empty file) the embedded fallback is used and the game always reaches `'playing'`. The two-pass color evaluation, NFC umlaut handling, IME-safe input handling and stale-class cleanup from previous revisions are preserved.
+
 ## Running Locally
 
-There is no build step. Open `index.html` in any modern browser. The Wordle game uses `fetch('words.txt')`, so it has to be served over `http://` rather than `file://` — any one-liner static server works:
+There is no build step. Open `index.html` in any modern browser. The landing page and project showcase work straight from `file://`. The Wordle subpage **also works from `file://`** because its word list is embedded directly in `script.js` — you can open `wordle/wordle.html` directly in a browser and play without any server.
+
+This is the recommended way to play. Running a static server is optional and only matters if you want to keep `words.txt` as the live source of truth:
 
 ```bash
 python3 -m http.server 8000
-# Then visit http://localhost:8000/
+# Then visit http://localhost:8000/wordle/wordle.html
 ```
 
 ## Browser Support

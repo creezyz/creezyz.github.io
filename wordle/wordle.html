@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wort-Rätsel</title>
+    <title>WORDLE (DE)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="theme-icon">&#9790;</span>
     </button>
+
     <div class="game-container">
-        <h1>Wort-Rätsel</h1>
-        <p id="message">Lade Wörter...</p>
+      <header class="game-header">
+        <span class="slash slash-tl"></span>
+        <h1>WORDLE</h1>
+        <p class="subtitle">DE &middot; 5 BUCHSTABEN &middot; 6 VERSUCHE</p>
+        <span class="slash slash-br"></span>
+      </header>
 
-        <div id="word-display">_ _ _ _ _</div>
+      <div class="meta-bar">
+        <span id="attempt-counter">Versuch 1 / 6</span>
+        <span id="word-counter">Wörter geladen…</span>
+      </div>
 
-        <div class="input-section">
-            <input type="text" id="guess-input" maxlength="1" placeholder="Buchstabe">
-            <button onclick="makeGuess()">Raten</button>
-        </div>
+      <div class="input-row" id="inputRow">
+        <input
+          type="text"
+          id="guessInput"
+          maxlength="5"
+          autocomplete="off"
+          autocapitalize="none"
+          autocorrect="off"
+          spellcheck="false"
+          placeholder="5 BUCHSTABEN"
+          aria-label="Wort-Eingabe"
+        >
+        <button id="submitBtn" type="button">RATEN</button>
+      </div>
 
-        <p id="attempts-display">Versuche übrig: 10</p>
+      <div class="grid" id="grid" aria-label="Wordle Grid"></div>
+
+      <div class="status" id="status" role="status" aria-live="polite">Lade Wörter…</div>
+
+      <button class="new-game-btn" id="newGameBtn" type="button" hidden>NEUES SPIEL</button>
     </div>
 
     <script src="script.js"></script>
