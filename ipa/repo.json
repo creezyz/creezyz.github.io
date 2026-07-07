@@ -1,5 +1,5 @@
 {
-  "name": "creezyz repo",
+  "name": "repo",
   "subtitle": "A source for all of my apps",
   "description": "Welcome to my source! Here you'll find all of my apps.",
   "iconURL": "https://i.imgur.com/pqIZoZo.jpeg",
@@ -21,7 +21,17 @@
       "tintColor": "#2cccfc",
       "category": "other",
       "screenshots": [],
-      "versions": [],
+      "versions": [
+        {
+          "downloadURL": "https://download.spooferpro.com/SpooferPro-0.417.2-0.695.RLS.ipa",
+          "size": 164500000,
+          "version": "0.417.2",
+          "buildVersion": null,
+          "date": "2026-07-07T10:55:00+02:00",
+          "localizedDescription": null,
+          "minOSVersion": null
+        }
+      ],
       "appPermissions": {
         "entitlements": [],
         "privacy": {
